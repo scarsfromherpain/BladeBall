@@ -4,7 +4,7 @@ local executortext = "(Unknown Executor)"
 if identifyexecutor() and 15 >= #identifyexecutor() then
     executortext = string.format("(%s)", identifyexecutor())
 end 
-guilib:Init({title = string.format("Night RBX%s", executortext)})
+guilib:Init({title = string.format("Scars RBX%s", executortext)})
 
 local tabs = {
     Main = guilib:NewTab({name = "Main", icon = "rbxassetid://17873742976"}),

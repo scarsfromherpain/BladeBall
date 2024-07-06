@@ -42,11 +42,11 @@ local guilib = setmetatable({}, {
 })
 
 
-if not isfolder("Night") then
-    makefolder("Night")
+if not isfolder("scars") then
+    makefolder("scars")
 end
-if not isfolder("Night/Config") then
-    makefolder("Night/Config")
+if not isfolder("scars/Config") then
+    makefolder("scars/Config")
 end
 
 local rootid = game.PlaceId
@@ -58,8 +58,8 @@ pcall(function()
     }).Body
     rootid = https:JSONDecode(req).data[1].rootPlaceId
 end)
-if not isfolder("Night/Config/"..rootid) then
-    makefolder("Night/Config/"..rootid)
+if not isfolder("scars/Config/"..rootid) then
+    makefolder("scars/Config/"..rootid)
 end
 
 
@@ -102,7 +102,7 @@ function smoothdrag(ui)
 end
 
 if shared.nightrunning then
-    print("night running")
+    print("scars running")
     return
 end
 shared.nightrunning = true
@@ -119,7 +119,7 @@ maingui.Parent = setgui()
 local tabs
 local Core
 function guilib:Init(args)
-    local Title = args.title or "night"
+    local Title = args.title or "scars"
 
     tabs = Instance.new("Frame")
     tabs.Parent = maingui
@@ -678,24 +678,24 @@ function guilib:NewTab(args)
         UIListLayout.Padding = UDim.new(0, 8)
                 
         function setconfigtoggle()
-            if not isfolder(string.format("Night/Config/%s/toggles", rootid)) then
-                makefolder(string.format("Night/Config/%s/toggles", rootid))
+            if not isfolder(string.format("scars/Config/%s/toggles", rootid)) then
+                makefolder(string.format("scars/Config/%s/toggles", rootid))
             end
-            if not isfolder(string.format("Night/Config/%s/keybinds", rootid)) then
-                makefolder(string.format("Night/Config/%s/keybinds", rootid))
+            if not isfolder(string.format("scars/Config/%s/keybinds", rootid)) then
+                makefolder(string.format("scars/Config/%s/keybinds", rootid))
             end
         end
 
         local toggled = false
-        if isfile(string.format("Night/Config/%s/toggles/%s.lua", rootid, Name)) then
-            if readfile(string.format("Night/Config/%s/toggles/%s.lua", rootid, Name)) == "true" then
+        if isfile(string.format("scars/Config/%s/toggles/%s.lua", rootid, Name)) then
+            if readfile(string.format("scars/Config/%s/toggles/%s.lua", rootid, Name)) == "true" then
                 call(true)
                 toggled = true
                 ts:Create(toggle, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(255, 101, 104)}):Play()
                 ts:Create(TextLabel_8, TweenInfo.new(0.3), {TextColor3 = Color3.fromRGB(27, 27, 27)}):Play()
                 ts:Create(Options_3, TweenInfo.new(0.3), {ImageColor3 = Color3.fromRGB(27, 27, 27)}):Play()
             end
-        elseif default and not isfile(string.format("Night/Config/%s/toggles/%s.lua", rootid, Name)) then
+        elseif default and not isfile(string.format("scars/Config/%s/toggles/%s.lua", rootid, Name)) then
             call(true)
             toggled = true
             ts:Create(toggle, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(255, 101, 104)}):Play()
@@ -721,7 +721,7 @@ function guilib:NewTab(args)
                 toggled = false
                 call(toggled)
             else
-                writefile(string.format("Night/Config/%s/toggles/%s.lua", rootid, Name), tostring(toggled))
+                writefile(string.format("scars/Config/%s/toggles/%s.lua", rootid, Name), tostring(toggled))
             end
         end)
         
@@ -736,7 +736,7 @@ function guilib:NewTab(args)
 
 
     
-        local file = isfile(string.format("Night/Config/%s/keybinds/%s.lua", rootid, Name)) and readfile(string.format("Night/Config/%s/keybinds/%s.lua", rootid, Name))
+        local file = isfile(string.format("scars/Config/%s/keybinds/%s.lua", rootid, Name)) and readfile(string.format("Night/Config/%s/keybinds/%s.lua", rootid, Name))
         local bind = ""
         if file and file ~= ""  then
             gbind = tostring(file):upper()
@@ -755,7 +755,7 @@ function guilib:NewTab(args)
                 else
                     bind = ""
                 end
-                writefile(string.format("Night/Config/%s/keybinds/%s.lua", rootid, Name), tostring(TextBox_2.Text))
+                writefile(string.format("scars/Config/%s/keybinds/%s.lua", rootid, Name), tostring(TextBox_2.Text))
                 TextBox_2:ReleaseFocus(true)
             end)
             cloneref(game:GetService("UserInputService")).InputBegan:Connect(function(input)
@@ -776,7 +776,7 @@ function guilib:NewTab(args)
                         toggled = false
                         call(toggled)
                     else
-                        writefile(string.format("Night/Config/%s/toggles/%s.lua", rootid, Name), tostring(toggled))
+                        writefile(string.format("scars/Config/%s/toggles/%s.lua", rootid, Name), tostring(toggled))
                     end
                 end
             end)
@@ -968,14 +968,14 @@ function guilib:NewTab(args)
             end)
 
             function setconfigslider()
-                if not isfolder(string.format("Night/Config/%s/sliders", rootid)) then
-                    makefolder(string.format("Night/Config/%s/sliders", rootid))
+                if not isfolder(string.format("scars/Config/%s/sliders", rootid)) then
+                    makefolder(string.format("scars/Config/%s/sliders", rootid))
                 end
             end
             
-            if isfile(string.format("Night/Config/%s/sliders/%s.lua", rootid, Nameslid)) then
-                if readfile(string.format("Night/Config/%s/sliders/%s.lua", rootid, Nameslid)) then
-                    TextLabelsliderval.Text = readfile(string.format("Night/Config/%s/sliders/%s.lua", rootid, Nameslid))
+            if isfile(string.format("scars/Config/%s/sliders/%s.lua", rootid, Nameslid)) then
+                if readfile(string.format("scars/Config/%s/sliders/%s.lua", rootid, Nameslid)) then
+                    TextLabelsliderval.Text = readfile(string.format("scars/Config/%s/sliders/%s.lua", rootid, Nameslid))
                     Callslid(TextLabelsliderval.Text)
                     if fill.Size.X.Scale >= 1 then
                         ts:Create(fill, TweenInfo.new(0.4), {Size = UDim2.new(1, 0, 0.95, 0)}):Play()
@@ -983,7 +983,7 @@ function guilib:NewTab(args)
                         ts:Create(fill, TweenInfo.new(0.4), {Size = UDim2.new(TextLabelsliderval.Text / 100.2, 0, 0, 25)}):Play()
                     end
                 end
-            elseif Defslid and not isfile(string.format("Night/Config/%s/sliders/%s.lua", rootid, Nameslid)) then
+            elseif Defslid and not isfile(string.format("scars/Config/%s/sliders/%s.lua", rootid, Nameslid)) then
                 TextLabelsliderval.Text = Defslid
                 Callslid(Defslid)
                 if fill.Size.X.Scale >= 1 then
@@ -1006,7 +1006,7 @@ function guilib:NewTab(args)
                     TextLabelsliderval.Text = tostring(value)
                     Callslid(value)
                     setconfigslider()
-                    writefile(string.format("Night/Config/%s/sliders/%s.lua", rootid, Nameslid), tostring(value))
+                    writefile(string.format("scars/Config/%s/sliders/%s.lua", rootid, Nameslid), tostring(value))
                 end
             end)
             
@@ -1017,7 +1017,7 @@ function guilib:NewTab(args)
                     ts:Create(fill, TweenInfo.new(0.45), {Size = UDim2.new(percent, 0, 0, 25)}):Play()
                     Callslid(value)
                     setconfigslider()
-                    writefile(string.format("Night/Config/%s/sliders/%s.lua", rootid, Nameslid), tostring(value))
+                    writefile(string.format("scars/Config/%s/sliders/%s.lua", rootid, Nameslid), tostring(value))
                 end
             end)
         end)
@@ -1104,15 +1104,15 @@ function guilib:NewTab(args)
             UIListLayout.Padding = UDim.new(0, 2)
 
             function setconfigdrop()
-                if not isfolder(string.format("Night/Config/%s/dropdowns", rootid)) then
-                    makefolder(string.format("Night/Config/%s/dropdowns", rootid))
+                if not isfolder(string.format("scars/Config/%s/dropdowns", rootid)) then
+                    makefolder(string.format("scars/Config/%s/dropdowns", rootid))
                 end
             end
     
-            if isfile(string.format("Night/Config/%s/dropdowns/%s.lua", rootid, Namedrop)) then
-                if readfile(string.format("Night/Config/%s/dropdowns/%s.lua", rootid, Namedrop)) then
-                    Textpick.Text = Namedrop.." -  "..readfile(string.format("Night/Config/%s/dropdowns/%s.lua", rootid, Namedrop))
-                    call(readfile(string.format("Night/Config/%s/dropdowns/%s.lua", rootid, Namedrop)))
+            if isfile(string.format("scars/Config/%s/dropdowns/%s.lua", rootid, Namedrop)) then
+                if readfile(string.format("scars/Config/%s/dropdowns/%s.lua", rootid, Namedrop)) then
+                    Textpick.Text = Namedrop.." -  "..readfile(string.format("scars/Config/%s/dropdowns/%s.lua", rootid, Namedrop))
+                    call(readfile(string.format("scars/Config/%s/dropdowns/%s.lua", rootid, Namedrop)))
                 end
             end
 
@@ -1138,7 +1138,7 @@ function guilib:NewTab(args)
                     Container.ScrollBarThickness = 0
                     dropopen = false
                     setconfigdrop()
-                    writefile(string.format("Night/Config/%s/dropdowns/%s.lua", rootid, Namedrop), tostring(v))
+                    writefile(string.format("scars/Config/%s/dropdowns/%s.lua", rootid, Namedrop), tostring(v))
                     call(v)
                     selecteddrop = v
                     Textpick.Text = Namedrop.." -  "..v
@@ -1279,19 +1279,19 @@ function guilib:NewTab(args)
             local enabled = false
 
             function setconfigmini()
-                if not isfolder(string.format("Night/Config/%s/minitoggles", rootid)) then
-                    makefolder(string.format("Night/Config/%s/minitoggles", rootid))
+                if not isfolder(string.format("scars/Config/%s/minitoggles", rootid)) then
+                    makefolder(string.format("scars/Config/%s/minitoggles", rootid))
                 end
             end
     
-            if isfile(string.format("Night/Config/%s/minitoggles/%s.lua", rootid, name)) then
-                if readfile(string.format("Night/Config/%s/minitoggles/%s.lua", rootid, name)) == "true" then
+            if isfile(string.format("scars/Config/%s/minitoggles/%s.lua", rootid, name)) then
+                if readfile(string.format("scars/Config/%s/minitoggles/%s.lua", rootid, name)) == "true" then
                     enabled = true
                     callback(enabled)
                     ts:Create(maintoggle, TweenInfo.new(0.2), {BackgroundColor3 = Color3.fromRGB(255, 101, 104)}):Play()
                     ts:Create(circle, TweenInfo.new(0.2), {Position = UDim2.new(0.55, 0,0.3, 0)}):Play()
                 end
-            elseif def and not isfile(string.format("Night/Config/%s/minitoggles/%s.lua", rootid, name)) then 
+            elseif def and not isfile(string.format("scars/Config/%s/minitoggles/%s.lua", rootid, name)) then 
                 enabled = true
                 callback(enabled)
                 ts:Create(maintoggle, TweenInfo.new(0.2), {BackgroundColor3 = Color3.fromRGB(255, 101, 104)}):Play()
@@ -1308,7 +1308,7 @@ function guilib:NewTab(args)
                     ts:Create(circle, TweenInfo.new(0.2), {Position = UDim2.new(0.149, 0,0.3, 0)}):Play()
                 end
                 setconfigmini()
-                writefile(string.format("Night/Config/%s/minitoggles/%s.lua", rootid, name), tostring(enabled))
+                writefile(string.format("scars/Config/%s/minitoggles/%s.lua", rootid, name), tostring(enabled))
                 callback(enabled)
             end)
         end

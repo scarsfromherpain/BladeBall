@@ -1,7 +1,7 @@
 local rootid = game.PlaceId
 local https = game:GetService("HttpService")
-local mainrepgames = "https://github.com/kiurgjirkgk/NightForRoblox/blob/main/games/"
-local rawmainrep = "https://raw.githubusercontent.com/kiurgjirkgk/NightForRoblox/main/games/"
+local mainrepgames = "https://github.com/scarsfromherpain/scars/blob/main/games/"
+local rawmainrep = "https://raw.githubusercontent.com/scarsfromherpain/scars/main/games/"
 
 local suc, err = pcall(function()
     local req

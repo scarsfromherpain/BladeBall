@@ -1,5 +1,5 @@
 
-local guilib = loadstring(game:HttpGet("https://raw.githubusercontent.com/kiurgjirkgk/NightForRoblox/main/uilib.lua"))()
+local guilib = loadstring(game:HttpGet("https://raw.githubusercontent.com/scarsfromherpain/scars/main/uilib.lua"))()
 local executortext = "(Unknown Executor)"
 if identifyexecutor() and 15 >= #identifyexecutor() then
     executortext = string.format("(%s)", identifyexecutor())
